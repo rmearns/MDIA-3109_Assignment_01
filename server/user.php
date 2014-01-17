@@ -13,11 +13,11 @@ class User {
 	function get_usernames(){
 		$var = new User_db();
 		$usernames = $var->get_all_users();
-		foreach($usernames as $id => $name){
+		/*foreach($usernames as $id => $name){
 			if($name == "user1"){
 				$usernames[$id] = $name." - TROLL";
 			}
-		}
+		}*/
 		return $usernames;
 	}
 }
