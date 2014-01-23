@@ -1,6 +1,6 @@
 <?php
 
-$con=mysqli_connect("localhost", "root", "", "project");
+$con=mysqli_connect("localhost", "root", "", "interface");
 
 if(mysqli_connect_errno()){
 	//failed to connect
