@@ -1,10 +1,14 @@
 <?php
 
-$con=mysqli_connect("localhost", "root", "", "interface");
+$con = mysqli_connect("localhost", "root", "", "gallery");
 
 if(mysqli_connect_errno()){
 	//failed to connect
 	echo "failed to connect".mysqli_connect_errno();
+}
+
+else {
+	echo "connected";
 }
 
 ?>

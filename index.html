@@ -6,26 +6,11 @@
 <title>Project 1</title>
 
 <script>
-$(document).ready(function(){
-	/*$.get("server/user_view.php", {user:true}, function(data){
-		//do something
-		//console.log(data);
-	});*/
-
-	$.get("server/user_view.php", {username:true}, function(data){
-		//do something
-		var names = $.parseJSON(data);
-		
-		console.log(names);
-
-		$.each(names, function(index){
-
-		item = {
-			num: names[index].id,
-			user: names[index].username,
-		};
-
-		$("#show_box").prepend("<p>"+item.user+" "+item.num+"</p>\n");
+$(document).ready(function(e){
+	$("#reg_but").click(function(e){
+		$.get("sv/user_client.php", {user:true, user_id:1}, function(data){
+			var j_data = $.parseJSON(data);
+			console.log(j_data);
 		});
 	});
 });
@@ -37,9 +22,7 @@ $(document).ready(function(){
 </head>
 <body>
 
-<div id='show_box'>
-
-</div>
+<input type='button' value='Register' id='reg_but' />
 
 </body>
 </html>
