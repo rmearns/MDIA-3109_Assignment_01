@@ -6,13 +6,23 @@
 <title>Project 1</title>
 
 <script>
-$(document).ready(function(e){
-	$("#reg_but").click(function(e){
-		$.get("sv/user_client.php", {user:true, user_id:1}, function(data){
-			var j_data = $.parseJSON(data);
-			console.log(j_data);
+$(document).ready(function(){
+
+	$("#users").click(function(e){
+		$.get("sv/users_client.php", {allusers:true}, function(data){
+
+		var users = $.parseJSON(data);
+
+		$.each(users, function(index){
+			var table_data = "<tr><td>"+
+				users[index]["username"]+"</td><td>"+
+				users[index]["description"]+"</td><td><img src='"+
+				users[index]["avatar"]+"'/></td></tr>";
+			$("#display_table").append(table_data);
 		});
+
 	});
+
 });
 </script>
 
@@ -22,7 +32,14 @@ $(document).ready(function(e){
 </head>
 <body>
 
-<input type='button' value='Register' id='reg_but' />
+<input type='button' id='users' value='Get all users' />
+<table id='display_table' border=1>
+
+</table>
+
+<div id='show_box'>
+
+</div>
 
 </body>
 </html>
