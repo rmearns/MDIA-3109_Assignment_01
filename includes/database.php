@@ -41,19 +41,19 @@ class MySQLDatabase {
 	}
 	
 	public function escape_value( $value ) {
-		if( $this->real_escape_string_exists ) { // PHP v4.3.0 or higher
-			// undo any magic quote effects so mysql_real_escape_string can do the work
+		if( $this->real_escape_string_exists ) {
+
 			if( $this->magic_quotes_active ) { $value = stripslashes( $value ); }
 			$value = mysql_real_escape_string( $value );
-		} else { // before PHP v4.3.0
-			// if magic quotes aren't already on then add slashes manually
+		} else {
+
 			if( !$this->magic_quotes_active ) { $value = addslashes( $value ); }
-			// if magic quotes are active, then the slashes already exist
+
 		}
 		return $value;
 	}
 	
-	// "database-neutral" methods
+
   public function fetch_array($result_set) {
     return mysql_fetch_array($result_set);
   }
@@ -63,7 +63,7 @@ class MySQLDatabase {
   }
   
   public function insert_id() {
-    // get the last id inserted over the current db connection
+
     return mysql_insert_id($this->connection);
   }
   
@@ -74,7 +74,7 @@ class MySQLDatabase {
 	private function confirm_query($result) {
 		if (!$result) {
 	    $output = "Database query failed: " . mysql_error() . "<br /><br />";
-	    //$output .= "Last SQL query: " . $this->last_query;
+
 	    die( $output );
 		}
 	}

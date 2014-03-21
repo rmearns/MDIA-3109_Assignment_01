@@ -1,7 +1,5 @@
 <?php
 
-// This is a helper class to make paginating 
-// records easy.
 class Pagination {
 	
   public $current_page;
@@ -14,11 +12,7 @@ class Pagination {
     $this->total_count = (int)$total_count;
   }
 
-  public function offset() {
-    // Assuming 20 items per page:
-    // page 1 has an offset of 0    (1-1) * 20
-    // page 2 has an offset of 20   (2-1) * 20
-    //   in other words, page 2 starts with item 21
+  public function offset() {]
     return ($this->current_page - 1) * $this->per_page;
   }
 

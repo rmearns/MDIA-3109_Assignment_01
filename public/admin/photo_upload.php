@@ -14,11 +14,11 @@ if (!$session->is_logged_in()) { redirect_to("login.php"); }
 		$photo->caption = $_POST['caption'];
 		$photo->attach_file($_FILES['file_upload']);
 		if($photo->save()) {
-			// Success
+
       $session->message("Photograph uploaded successfully.");
 			redirect_to('list_photos.php');
 		} else {
-			// Failure
+
       $message = join("<br />", $photo->errors);
 		}
 	}
